@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :tools do
     resources :bookings
   end
-  resources :users
+  get "/account", to: "account#show"
 end
