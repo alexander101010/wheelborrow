@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController
-  before_action :find_tool, only: [:show, :create, :edit, :destroy]
+  before_action :find_tool, only: [:show, :edit, :destroy]
 
   def index
     @tools = Tool.all
@@ -14,8 +14,9 @@ class ToolsController < ApplicationController
 
   def create
     @tool = Tool.new(tool_params)
+    @tool.user = current_user
     if @tool.save
-      redirect_to user_path
+      redirect_to account_path
     else
       render :new
     end
@@ -36,11 +37,10 @@ class ToolsController < ApplicationController
   private
 
   def tool_params
-    params.require(:tool).permit(:description, :category)
+    params.require(:tool).permit(:name, :description, :price, :category)
   end
 
   def find_tool
     @tool = Tool.find(params[:id])
   end
-
 end

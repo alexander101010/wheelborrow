@@ -1,2 +1,15 @@
+<div class="container">
 <h1>Tools#new</h1>
 <p>Find me in app/views/tools/new.html.erb</p>
+
+
+
+<div class="new-tool-form">
+  <%= simple_form_for(@tool, method: :post) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :price, collection: 1..100%>
+  <%= f.input :category, collection: ["hand tools", "power tools", "gardening tools"] %>
+  <%= f.submit "Add Tool", class: "btn btn-success" %>
+<% end %>
+</div>
