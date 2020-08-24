@@ -1,3 +1,10 @@
 class Tool < ApplicationRecord
   belongs_to :user
+  validates :description, :category, :name, :price, presence: :true
+  validates :description, length: {maximum: 750}
+  validates :name, length: {maximum: 50}
+  validates :description, length: {minimum: 100}
+  validates :price, numericality: true
+  validates :category, inclusion: { in: ["hand tools", "power tools", "gardening tools"],
+    message: "%{value} is not a valid category" }
 end
