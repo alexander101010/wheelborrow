@@ -1,4 +1,9 @@
 <h1><%= @user  %></h1>
 
 
-<%= link_to "add a tool", tools_new_path %>
+<%= link_to "add a tool", new_tool_path %>
+
+<% @tools.each do  |tool| %>
+<h1> <%= tool.name %> </h1>
+<h2> <%= tool.description %> </h2>
+<% end %>
