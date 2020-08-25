@@ -1,0 +1,10 @@
+.tool-map {
+  height: 100vh;
+  margin-left: 10px;
+  position: sticky;
+}
+@media (max-width: 980px) {
+  .tool-map {
+    display: none;
+  }
+}

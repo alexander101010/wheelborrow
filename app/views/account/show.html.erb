@@ -1,9 +1,15 @@
-<h1><%= @user  %></h1>
+<h1><%= @user.first_name  %></h1>
 
-
+<% raise %>
 <%= link_to "add a tool", new_tool_path %>
 
 <% @tools.each do  |tool| %>
-<h1> <%= tool.name %> </h1>
-<h2> <%= tool.description %> </h2>
+  <h1> <%= tool.name %> </h1>
+  <h2> <%= tool.description %> </h2>
+  <%= link_to edit_tool_path(tool.id) do %>
+  <i id="edit-icon"class="fas fa-pencil-alt"></i>
+  <% end %>
+  <%= link_to tool_path(tool.id), method: :delete  do %>
+  <i id="trash-icon" class="fas fa-trash"></i>
+  <% end %>
 <% end %>

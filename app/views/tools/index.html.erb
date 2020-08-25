@@ -1,2 +1,21 @@
-<h1>Tools#index</h1>
-<p>Find me in app/views/tools/index.html.erb</p>
+<h1>Tools</h1>
+<p>Available tools:</p>
+
+
+<div class="container">
+  <div class="tool-cards"></div>
+    <% @tools.each do |tool| %>
+      <div class="card-tool">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-tool-infos">
+          <h2><%= tool.name %></h2>
+          <p> <%= tool.description %> </p>
+          <%= link_to 'Details', tool %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+ <!--  <div class="tool-map">
+    <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoidG9td2VudCIsImEiOiJja2RrNnJyaW0wbG5yMzFsaDhpMms3Y2t6In0.D0mhEjN46dDU81q2ONiDQw'>
+  </div> -->
+</div>
