@@ -8,6 +8,7 @@
   <%= simple_form_for(@tool, method: :post) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
+  <%= f.input :photo, as: :file %>
   <%= f.input :price, collection: 1..100%>
   <%= f.input :price, as: :range, collection: 1..100 %>
   <%= f.input :category, collection: ["hand tools", "power tools", "gardening tools"] %>
