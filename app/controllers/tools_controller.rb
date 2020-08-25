@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController
-  before_action :find_tool, only: [:show, :edit, :destroy]
+  before_action :find_tool, only: [:show, :edit, :destroy, :update]
 
   def index
     @tools = Tool.all
@@ -26,12 +26,16 @@ class ToolsController < ApplicationController
   end
 
   def update
-    @tool.update(tool_params)
+    if @tool.update(tool_params)
+      redirect_to account_path
+    else
+      render :new
+    end
   end
 
   def destroy
     @tool.destroy
-    redirect_to user_path
+    redirect_to account_path
   end
 
   private

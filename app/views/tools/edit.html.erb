@@ -1,2 +1,12 @@
 <h1>Tools#edit</h1>
 <p>Find me in app/views/tools/edit.html.erb</p>
+
+<div class="edit-tool-form">
+  <%= simple_form_for(@tool) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :price, collection: 1..100%>
+  <%= f.input :category, collection: ["hand tools", "power tools", "gardening tools"] %>
+  <%= f.submit "Update Tool", class: "btn btn-success" %>
+<% end %>
+</div>
