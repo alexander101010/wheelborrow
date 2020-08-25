@@ -2,11 +2,15 @@
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #1EDD88;
+  background: $orange;
   transition: background 0.3s ease;
 }
 
 .btn-flat:hover {
-  background: #1BCB7F;
+  background: #B4B3B1;
   color: white;
+}
+
+.btn-flat .btn-search-bar {
+  border-radius: 30px;
 }

@@ -1,7 +1,58 @@
-<div class="container">
-  <%= render 'shared/search_bar' %>
+<div class="container-homepage">
+  <%= render 'components/search-bar' %>
+  <%= render 'components/homepage-card' %>
 
-  <%= render 'shared/homepage_card' %>
+  <div class="homepage-titles">
+    <h1>Who is WheelBorrow for?</h1>
+  </div>
 
-  <%= render 'shared/footer' %>
+  <div class="owners-card">
+    <div class="owners-text">
+      <h3>TOOL OWNERS</h3>
+      <h5>Do you have spare tools & equipment sitting around, doing nothing? (Remember how much you paid for them?</h5>
+    </div>
+    <div class="owner-steps">
+      <div class="owner-setup-step">
+        <div class="step-number">
+          <h1>1</h1>
+          <div class="set-up-image">
+            <%= image_tag('owner_first_step.png')%>
+          </div>
+          <p class="set-up-text">Set up your account</p>
+        </div>
+        <div class="step-number">
+          <h1>2</h1>
+          <div class="set-up-image">
+            <%= image_tag('owner_first_step.png')%>
+          </div>
+          <p class="set-up-text">Take photos of your tools & list them</p>
+        </div>
+        <div class="step-number">
+          <h1>3</h1>
+          <div class="set-up-image">
+            <%= image_tag('owner_first_step.png')%>
+          </div>
+          <p class="set-up-text">Set your daily rental rates</p>
+        </div>
+        <div class="step-number">
+          <h1>4</h1>
+          <div class="set-up-image">
+            <%= image_tag('owner_first_step.png')%>
+          </div>
+          <p class="set-up-text">Make money with your spare tools!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="homepage-titles">
+    <h1>WheelBorrow makes it easy</h1>
+  </div>
+
+  <div class="homepage-titles">
+    <h1>Advantages of WheelBorrow</h1>
+  </div>
+
 </div>
+
+<%= render 'shared/footer' %>
