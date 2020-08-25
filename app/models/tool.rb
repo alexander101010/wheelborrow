@@ -1,5 +1,8 @@
 class Tool < ApplicationRecord
   belongs_to :user
+  has_one_attached :photo
+
+
   validates :description, :category, :name, :price, presence: :true
   validates :description, length: {maximum: 750}
   validates :name, length: {maximum: 50}
