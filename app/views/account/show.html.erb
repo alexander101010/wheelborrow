@@ -17,7 +17,7 @@
       <% end %>
     <%= link_to "add a tool", new_tool_path, class:"btn btn-primary" %></div>
   <div class="account-container">
-    <h3>My Bookings</h3>
+    <h3>My Borrows</h3>
     <% @user.bookings.each do |booking| %>
         <div class="card-tool">
           <% if tool.photo.attached? %>
@@ -25,13 +25,33 @@
           <% end %>
           <div class="card-tool-infos">
             <h2><%= booking.tool.name %></h2>
-            <p><%= booking.tool.category %></hp>
+            <p><%= booking.tool.category %></p>
             <p> Start:<%= booking.start_date %>  ||  End:<%= booking.end_date %></p>
             <p><%= booking.tool.user.first_name %></p>
           </div>
         </div>
       <% end %>
+    </div>
+  <div class="account-container">
+    <h3>My Lends</h3>
+    <% @tools.each do |tool| %>
+        <% tool.bookings.order(:start_date).each do |booking| %>
+          <div class="card-tool">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-tool-infos">
+              <h2><%= tool.name %></h2>
+              <p><%= tool.category %></p>
+              <p> Start:<%= booking.start_date %>  ||  End:<%= booking.end_date %></p>
+              <p><%= User.find(booking.user_id).first_name %> </p>
+            </div>
+           </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
+
+
+
 
 
