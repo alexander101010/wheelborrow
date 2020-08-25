@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resources :bookings
   end
   get "/account", to: "account#show"
+  get "/home", to: "pages#home"
 end
