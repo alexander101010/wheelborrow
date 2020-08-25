@@ -1,14 +1,20 @@
-<h1><%= @user.first_name  %></h1>
+<div class="container">
+  <h1>Your Account</h1>
 
-<%= link_to "add a tool", new_tool_path %>
+  <div class="container">
+    <div class="tool-cards"></div>
+      <% @tools.each do |tool| %>
+        <div class="card-tool">
+          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <div class="card-tool-infos">
+            <h2><%= tool.name %></h2>
+            <p> <%= tool.description %> </p>
+            <%= link_to 'Details', tool %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to "add a tool", new_tool_path, class:"btn btn-primary" %></div>
+  </div>
+</div>
 
-<% @tools.each do  |tool| %>
-  <h1> <%= tool.name %> </h1>
-  <h2> <%= tool.description %> </h2>
-  <%= link_to edit_tool_path(tool.id) do %>
-  <i id="edit-icon"class="fas fa-pencil-alt"></i>
-  <% end %>
-  <%= link_to tool_path(tool.id), method: :delete  do %>
-  <i id="trash-icon" class="fas fa-trash"></i>
-  <% end %>
-<% end %>
