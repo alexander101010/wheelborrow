@@ -3,7 +3,7 @@ class Tool < ApplicationRecord
   validates :description, :category, :name, :price, presence: :true
   validates :description, length: {maximum: 750}
   validates :name, length: {maximum: 50}
-  validates :description, length: {minimum: 100}
+  validates :description, length: {minimum: 50}
   validates :price, numericality: true
   validates :category, inclusion: { in: ["hand tools", "power tools", "gardening tools"],
     message: "%{value} is not a valid category" }
