@@ -1,12 +1,10 @@
 class BookingsController < ApplicationController
-  before_action :find
-
+  before_action :find, only: [:show, :edit, :destroy]
   def index
     @bookings = Booking.all
   end
 
   def show
-    @booking
   end
 
   def status?
@@ -27,18 +25,21 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @tool = Tool.find(params[:tool_id])
   end
 
   def create
     @booking = Booking.new(params_format)
+    @booking.tool = Tool.find(params[:tool_id])
+    @booking.user = current_user
+    @booking.status = 'pending'
+
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to tool_bookings_path(@booking)
     else
       render :new
     end
   end
-
-
 
 private
 
@@ -47,6 +48,6 @@ private
   end
 
   def params_format
-    # TO BE UPDATED params.require(:cocktail).permit(:name, :photo)
+    params.require("booking").permit(:start_date, :end_date)
   end
 end
