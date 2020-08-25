@@ -8,8 +8,8 @@
   <%= simple_form_for(@tool, method: :post) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :price, collection: 1..100%>
   <%= f.input :price, as: :range, collection: 1..100 %>
+  <p id="slider_value">  </p>
   <%= f.input :category, collection: ["hand tools", "power tools", "gardening tools"] %>
   <%= f.submit "Add Tool", class: "btn btn-success" %>
 <% end %>

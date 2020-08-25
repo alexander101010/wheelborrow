@@ -13,6 +13,7 @@ class ToolsController < ApplicationController
   end
 
   def create
+    raise
     @tool = Tool.new(tool_params)
     @tool.user = current_user
     if @tool.save
