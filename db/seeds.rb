@@ -16,6 +16,7 @@ require 'faker'
   user.email = Faker::Internet.email
   user.password = 'valid_password'
   user.password_confirmation = 'valid_password'
+  user.address = Faker::Address.full_address
   user.save!
 
   2.times do
