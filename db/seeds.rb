@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+require "open-uri"
 
+file = URI.open('https://picsum.photos/200/300')
 
 5.times do
   user = User.new
@@ -17,6 +19,7 @@ require 'faker'
   user.password = 'valid_password'
   user.password_confirmation = 'valid_password'
   user.address = Faker::Address.full_address
+  user.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
   user.save!
 
   2.times do
@@ -29,5 +32,7 @@ require 'faker'
     tool.save!
   end
 end
+
+
 
 
