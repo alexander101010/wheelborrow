@@ -1,7 +1,9 @@
 <div class="container-tool-show">
 
   <div class="card-tool-show">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+    <% if @tool.photo.attached? %>
+      <img src="<%= cl_image_path tool.photo.key %>"/>
+    <% end %>
   </div>
   <div class="card-tool-show-desc">
     <div class="tool-name">
@@ -11,35 +13,22 @@
       <p><%= @tool.description %></p>
     </div>
     <div class="tool-price">
-      <h3>€10/Day</h3>
+      <h3>€<%= @tool.price %>💸</h3>
     </div>
   </div>
   <div class="card-tool-show-lender">
     <div class="lender-avatar">
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-tool-show-user avatar-bordered" />
+      <% if @tool.user.photo.attached? %>
+        <img src="<%= cl_image_path tool.user.photo.key %>" class="card-tool-show-user avatar-bordered" />
+      <% end %>
     </div>
     <div class="lender-name">
-      <h2>LENDER NAME</h2>
+      <h2><%= @tool.user.first_name %></h2>
     </div>
     <div class="lender-address">
-      <p>LENDER ADDRESS</p>
+      <p><%= @tool.user.address %></p>
     </div>
   </div>
 
-  <%= link_to 'Request Booking', new_tool_booking_path(@tool), class: "btn btn-flat request-booking" %>
-
+  <%= link_to 'Request Booking', new_tool_booking_path(@tool), class: "btn btn-flat request-booking m-3" %>
 </div>
-
-
-<!--   <div class="card-tool-show">
-    <div class="card-tool-show-description">
-      <h2><%= @tool.name %></h2>
-      <p><%= @tool.description %></p>
-    </div>
-    <h2 class="card-tool-show-pricing">€10/Day</h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-tool-show-user avatar-bordered" />
-    </div>
-  </div>
-  <%= link_to 'Request Booking', new_tool_booking_path(@tool), class: "btn btn-flat" %>
-</div>
- -->

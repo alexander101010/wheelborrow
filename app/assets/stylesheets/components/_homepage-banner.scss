@@ -1,8 +1,27 @@
+.homepage-banner {
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  padding-left: 75px;
+  margin: 0px 0px 20px 0px;
+}
+
+.home-card-details > h3 {
+  font-weight: 150;
+  display: flex;
+}
+
 .search-form-control {
   position: absolute;
   padding-top: 100px;
   width: 80%;
-  left: 10%
 }
 
 .search-form-control .btn {

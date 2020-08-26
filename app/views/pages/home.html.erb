@@ -1,6 +1,16 @@
-<div class="container-banner">
-  <%= render 'components/search-bar' %>
-  <%= render 'components/homepage-card' %>
+<div class="homepage-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url( <%= image_path('banner_image.jpg')%>);">
+  <div class="home-card-details">
+    <%= simple_form_for :search, url: tools_path, method: :get do |f| %>
+      <div class="search-form-control form-group">
+        <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+        <button name="button" type="submit" class="btn btn-flat">
+        <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    <% end %>
+    <h1>SIGN UP</h2>
+    <h2>For the tool renting service you've been waiting for</h2>
+  </div>
 </div>
 <div class="container-homepage">
   <div class="d-flex p-2">
@@ -46,7 +56,7 @@
     </div>
   </div>
 
-    <div class="owners-card">
+  <div class="owners-card">
     <div class="owners-text">
       <h3>TOOL RENTERS</h3>
       <h5>Have a project, but not the tools? (And don’t want to deal with the clutter, hassle, & expense of buying them?)</h5>
@@ -84,10 +94,9 @@
       </div>
     </div>
   </div>
-
   <div class="tool-categories">
     <div class="card-trip">
-    <%= image_tag('garden-tools.jpg')%>
+    <%= image_tag('garden-tool.jpg')%>
       <div class="card-trip-infos">
         <div>
           <h2>Garden tools</h2>
@@ -95,7 +104,7 @@
       </div>
     </div>
     <div class="card-trip">
-      <%= image_tag('garden-tools.jpg')%>
+      <%= image_tag('hand-tool.jpg')%>
       <div class="card-trip-infos">
         <div>
           <h2>Hand tools</h2>
@@ -103,7 +112,7 @@
       </div>
     </div>
     <div class="card-trip">
-      <%= image_tag('garden-tools.jpg')%>
+      <%= image_tag('electrical-tool.jpg')%>
       <div class="card-trip-infos">
         <div>
           <h2>Power tools</h2>
@@ -113,13 +122,3 @@
   </div>
 </div>
 
-
-
-
-  <div class="homepage-titles">
-    <h1>Advantages of WheelBorrow</h1>
-  </div>
-
-</div>
-
-<%= render 'shared/footer' %>
