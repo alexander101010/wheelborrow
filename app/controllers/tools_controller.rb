@@ -3,6 +3,13 @@ class ToolsController < ApplicationController
 
   def index
     @tools = Tool.all
+    @users = User.geocoded
+        @markers = @users.map do |user|
+      {
+        lat: user.latitude,
+        lng: user.longitude
+      }
+    end
   end
 
   def show
