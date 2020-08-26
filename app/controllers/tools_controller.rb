@@ -1,4 +1,5 @@
 class ToolsController < ApplicationController
+  skip_before_action :authenticate_user!, :only => [:index, :show]
   before_action :find_tool, only: [:show, :edit, :destroy, :update]
 
   def index
