@@ -1,15 +1,45 @@
+<div class="container-tool-show">
 
-<div class="container">
-  <div class="card-trip">
+  <div class="card-tool-show">
     <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-    <div class="card-trip-infos">
-      <div>
-        <h2><%= @tool.name %></h2>
-        <p><%= @tool.description %></p>
-      </div>
-      <h2 class="card-trip-pricing">£99.99</h2>
-      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  </div>
+  <div class="card-tool-show-desc">
+    <div class="tool-name">
+      <h2><%= @tool.name %></h2>
+    </div>
+    <div class="tool-desc">
+      <p><%= @tool.description %></p>
+    </div>
+    <div class="tool-price">
+      <h3>€10/Day</h3>
     </div>
   </div>
-  <%= link_to 'Request a Booking!', new_tool_booking_path(@tool), class: "btn btn-primary" %>
+  <div class="card-tool-show-lender">
+    <div class="lender-avatar">
+      <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-tool-show-user avatar-bordered" />
+    </div>
+    <div class="lender-name">
+      <h2>LENDER NAME</h2>
+    </div>
+    <div class="lender-address">
+      <p>LENDER ADDRESS</p>
+    </div>
+  </div>
+
+  <%= link_to 'Request Booking', new_tool_booking_path(@tool), class: "btn btn-flat request-booking" %>
+
 </div>
+
+
+<!--   <div class="card-tool-show">
+    <div class="card-tool-show-description">
+      <h2><%= @tool.name %></h2>
+      <p><%= @tool.description %></p>
+    </div>
+    <h2 class="card-tool-show-pricing">€10/Day</h2>
+    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-tool-show-user avatar-bordered" />
+    </div>
+  </div>
+  <%= link_to 'Request Booking', new_tool_booking_path(@tool), class: "btn btn-flat" %>
+</div>
+ -->

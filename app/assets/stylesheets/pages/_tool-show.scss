@@ -1,0 +1,12 @@
+.container-tool-show {
+  margin: auto;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "img img img"
+    "desc desc lend"
+    "req req req";
+  gap: 15px 10px;
+}
