@@ -20,7 +20,7 @@
     <h3>My Borrows</h3>
     <% @user.bookings.each do |booking| %>
         <div class="card-tool">
-          <% if tool.photo.attached? %>
+          <% if booking.tool.photo.attached? %>
             <img src="<%= cl_image_path booking.tool.photo.key %>" />
           <% end %>
           <div class="card-tool-infos">
