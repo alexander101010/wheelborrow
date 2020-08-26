@@ -7,10 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
-require 'open-uri'
+require "open-uri"
 
-
-
+file = URI.open('https://picsum.photos/200/300')
 
 # 5.times do
 #   user = User.new
