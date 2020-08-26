@@ -2,7 +2,7 @@
 
   <div class="card-tool-show">
     <% if @tool.photo.attached? %>
-      <img src="<%= cl_image_path tool.photo.key %>"/>
+      <img src="<%= cl_image_path @tool.photo.key %>"/>
     <% end %>
   </div>
   <div class="card-tool-show-desc">
@@ -19,7 +19,7 @@
   <div class="card-tool-show-lender">
     <div class="lender-avatar">
       <% if @tool.user.photo.attached? %>
-        <img src="<%= cl_image_path tool.user.photo.key %>" class="card-tool-show-user avatar-bordered" />
+        <img src="<%= cl_image_path @tool.user.photo.key %>" class="card-tool-show-user avatar-bordered" />
       <% end %>
     </div>
     <div class="lender-name">
