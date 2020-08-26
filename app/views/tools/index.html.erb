@@ -5,6 +5,7 @@
   <div class="tool-index-container">
     <div class="tool-cards">
       <% @tools.each do |tool| %>
+      <%= link_to tool do %>
       <div class="card-tool">
         <% if tool.photo.attached? %>
         <img src="<%= cl_image_path tool.photo.key %>" />
@@ -12,9 +13,9 @@
         <div class="card-tool-infos">
           <h2><%= tool.name %></h2>
           <p> <%= tool.description %> </p>
-          <%= link_to 'Details', tool %>
         </div>
       </div>
+      <% end %>
       <% end %>
     </div>
     <div class="map-container">

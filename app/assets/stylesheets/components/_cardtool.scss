@@ -1,12 +1,14 @@
 
 .card-tool {
+  transition: background, border 0.2s ease-in-out;
   overflow: hidden;
   height: 120px;
-  background: white;
+  background: rgba(255,255,255,0.1);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
   margin: 10px;
+  border-radius: 15px;
 }
 
 .card-tool img {
@@ -15,22 +17,49 @@
   object-fit: cover;
 }
 
+
 .card-tool h2 {
+  transition: color 0.1s ease-in-out;
   font-size: 16px;
   font-weight: bold;
   margin: 0;
+  color:  black;
+  text-decoration: none;
 }
 
 .card-tool p {
+  transition: color 0.1s ease-in-out;
   font-size: 12px;
   line-height: 1.4;
   opacity: .7;
   margin-bottom: 0;
   margin-top: 8px;
+  color: black;
+  text-decoration: none;
 }
 
-.card-tool .card-tool-infos {
-  padding: 16px;
-}
+a:hover{
+  text-decoration: none;
+
+  .card-tool{
+    transition: all 0.3 ease-in-out;
+    border: 2px solid $primary;
+    background: $primary;
+      // background: rgba(100,100,100,0.1);
+    }
+    .card-tool h2{
+      transition: all 0.2s ease-in-out;
+      color: white;
+    }
+    .card-tool p{
+      transition: all 0.2s ease-in-out;
+      color: white;
+    }
+  }
+
+
+  .card-tool .card-tool-infos {
+    padding: 16px;
+  }
 
 
