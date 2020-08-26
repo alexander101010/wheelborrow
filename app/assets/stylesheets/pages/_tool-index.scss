@@ -1,0 +1,21 @@
+.tool-index-container{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.tool-cards{
+  width: 48%;
+}
+
+.map-container{
+  position: sticky;
+  top: 0;
+  width: 48%;
+  height: 100vh;
+
+}
+
+.tools-header{
+  margin: 10px;
+  margin-left: 10px;
+}
