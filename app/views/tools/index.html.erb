@@ -17,7 +17,9 @@
       </div>
     <% end %>
   </div>
- <!--  <div class="tool-map">
-    <img id="map" src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/600x1000?access_token=pk.eyJ1IjoidG9td2VudCIsImEiOiJja2RrNnJyaW0wbG5yMzFsaDhpMms3Y2t6In0.D0mhEjN46dDU81q2ONiDQw'>
-  </div> -->
+  <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
