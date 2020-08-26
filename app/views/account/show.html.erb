@@ -12,6 +12,9 @@
           <div class="card-tool-infos">
             <h2><%= tool.name %></h2>
             <%= link_to 'Details', tool %>
+            <%= link_to tool_path(tool_id), method: :delete do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
           </div>
         </div>
       <% end %>
