@@ -12,7 +12,7 @@
           <div class="card-tool-infos">
             <h2><%= tool.name %></h2>
             <%= link_to 'Details', tool %>
-            <%= link_to tool_path(tool_id), method: :delete do %>
+            <%= link_to tool, method: :delete do %>
               <i class="far fa-trash-alt"></i>
             <% end %>
           </div>
@@ -40,7 +40,7 @@
     <% @tools.each do |tool| %>
         <% tool.bookings.order(:start_date).each do |booking| %>
           <div class="card-tool">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <img src="<%= cl_image_path booking.tool.photo.key %>" />
             <div class="card-tool-infos">
               <h2><%= tool.name %></h2>
               <p><%= tool.category %></p>
