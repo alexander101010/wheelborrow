@@ -1,55 +1,95 @@
+
+<div class="account-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url( <%= image_path('account-banner.jpg')%>);">
+  <div class="container">
+    <h1>My account</h1>
+  </div>
+</div>
+
 <div class="container">
-  <h1>Your Account</h1>
+  <div class="row">
+    <div class="col-3">
+      <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">My tools</a>
+        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Renting</a>
+        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Renting out</a>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <% @tools.each do |tool| %>
+          <div class="tool-card">
+            <% if tool.photo.attached? %>
+            <img src="<%= cl_image_path tool.photo.key %>" />
+            <% end %>
+            <div class="tool-card-infos">
+              <h3><%= tool.name %></h3>
+              <h5><%= tool.description%></h5>
+              <h6>€<%= tool.price %>/day</h6>
+              <a class="btn btn-primary" href='<%= link_to 'Details', tool %>' role="button">Tool details</a>
+              <%= link_to tool, method: :delete do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+              </div>
+          </div>
+        <% end %>
+        <%= link_to "Add a new tool", new_tool_path, class:"btn btn-primary" %>
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+          <% @user.bookings.each do |booking| %>
+            <div class="tool-card">
+              <% if booking.tool.photo.attached? %>
+              <img src="<%= cl_image_path booking.tool.photo.key %>" />
+              <% end %>
+              <div class="tool-card-infos">
+                <h2><%= booking.tool.name %></h2>
+                <h5><%= booking.tool.description %></h5>
+                <br>
+                <p>Renting from: <%= booking.start_date %></p>
+                <p>Renting until: <%= booking.end_date %></p>
+                <p>Renting from:</p>
+                <p><%=booking.tool.user.first_name %> <%=booking.tool.user.last_name %></p>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+      </div>
+    </div>
+  </div>
   <br>
   <div class="account-container">
     <h3>My Tools</h3>
     <div class="tool-cards"></div>
-      <% @tools.each do |tool| %>
-        <div class="card-tool">
-          <% if tool.photo.attached? %>
-            <img src="<%= cl_image_path tool.photo.key %>" />
-          <% end %>
-          <div class="card-tool-infos">
-            <h2><%= tool.name %></h2>
-            <%= link_to 'Details', tool %>
-            <%= link_to tool, method: :delete do %>
-              <i class="far fa-trash-alt"></i>
-            <% end %>
-          </div>
-        </div>
+    <% @tools.each do |tool| %>
+    <div class="tool-card">
+      <% if tool.photo.attached? %>
+      <img src="<%= cl_image_path tool.photo.key %>" />
       <% end %>
+      <div class="tool-card-infos">
+        <h2><%= tool.name %></h2>
+        <%= link_to 'Details', tool %>
+
+      </div>
+    </div>
+    <% end %>
     <%= link_to "add a tool", new_tool_path, class:"btn btn-primary" %></div>
-  <div class="account-container">
-    <h3>My Borrows</h3>
-    <% @user.bookings.each do |booking| %>
-        <div class="card-tool">
-          <% if booking.tool.photo.attached? %>
-            <img src="<%= cl_image_path booking.tool.photo.key %>" />
-          <% end %>
-          <div class="card-tool-infos">
-            <h2><%= booking.tool.name %></h2>
-            <p><%= booking.tool.category %></p>
-            <p> Start:<%= booking.start_date %>  ||  End:<%= booking.end_date %></p>
-            <p><%= booking.tool.user.first_name %></p>
-          </div>
+
+    <div class="account-container">
+      <h3>My Lends</h3>
+      <% @tools.each do |tool| %>
+      <% tool.bookings.order(:start_date).each do |booking| %>
+      <div class="tool-card">
+        <img src="<%= cl_image_path booking.tool.photo.key %>" />
+        <div class="tool-card-infos">
+          <h2><%= tool.name %></h2>
+          <p><%= tool.category %></p>
+          <p> Start:<%= booking.start_date %>  ||  End:<%= booking.end_date %></p>
+          <p><%= User.find(booking.user_id).first_name %> </p>
         </div>
+      </div>
       <% end %>
     </div>
-  <div class="account-container">
-    <h3>My Lends</h3>
-    <% @tools.each do |tool| %>
-        <% tool.bookings.order(:start_date).each do |booking| %>
-          <div class="card-tool">
-            <img src="<%= cl_image_path booking.tool.photo.key %>" />
-            <div class="card-tool-infos">
-              <h2><%= tool.name %></h2>
-              <p><%= tool.category %></p>
-              <p> Start:<%= booking.start_date %>  ||  End:<%= booking.end_date %></p>
-              <p><%= User.find(booking.user_id).first_name %> </p>
-            </div>
-           </div>
-        <% end %>
-      </div>
     <% end %>
   </div>
 </div>
