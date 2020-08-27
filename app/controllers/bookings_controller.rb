@@ -36,6 +36,7 @@ class BookingsController < ApplicationController
 
     if @booking.save
       redirect_to account_path
+      flash[:notice] = "Your booking request has been processed!"
     else
       render :new
     end
