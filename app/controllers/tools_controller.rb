@@ -3,48 +3,14 @@ class ToolsController < ApplicationController
   before_action :find_tool, only: [:show, :edit, :destroy, :update]
 
   def index
-
-    if params[:location][:query] == ""
-      @users = []
-      search_tools if params[:tool][:query].present?
-      User.all.each do |user_result|
-        @tool_results.each do |tool_result|
-          if tool_result.searchable.user_id == user_result.id
-            @tools << tool_result.searchable
-            @users << user_result
-          end
-        end
-      end
-    else
-      search_location if params[:location][:query].present?
-      search_tools if params[:tool][:query].present?
-
-      @user_results.each do |user_result|
-        @tool_results.each do |tool_result|
-          if tool_result.searchable.user_id == user_result.searchable.id
-            @tools << tool_result.searchable
-            @users << user_result.searchable
-          end
-        end
-      end
-    end
-
+    @tools = Tool.all
+    @users = User.geocoded
         @markers = @users.map do |user|
       {
         lat: user.latitude,
         lng: user.longitude
       }
     end
-  end
-
-  def search_location
-    @users = []
-    @user_results = PgSearch.multisearch(params[:location][:query])
-  end
-
-  def search_tools
-    @tools = []
-    @tool_results = PgSearch.multisearch(params[:tool][:query])
   end
 
   def show

@@ -11,7 +11,4 @@ class Tool < ApplicationRecord
   validates :price, numericality: true
   validates :category, inclusion: { in: ["hand tools", "power tools", "gardening tools"],
     message: "%{value} is not a valid category" }
-
-  include PgSearch::Model
-  multisearchable against: [:name, :category, :description]
 end
