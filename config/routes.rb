@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :tools do
     resources :bookings
+    resources :reviews, only: [:new, :create]
   end
   get "/account", to: "account#show"
   get "/home", to: "pages#home"
