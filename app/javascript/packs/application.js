@@ -26,6 +26,8 @@ require("channels")
 import "bootstrap";
 import { sliderAnimation } from '../components/_slider.js';
 import { initMapbox } from '../plugins/init_mapbox';
+import { initStarRating } from '../plugins/init_star_rating';
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -36,4 +38,5 @@ document.addEventListener('turbolinks:load', () => {
   // executing the animation function
   initMapbox();
   sliderAnimation();
+  initStarRating();
 });
