@@ -13,6 +13,44 @@
     <h2>For the tool renting service you've been waiting for</h2>
   </div>
 </div>
+
+  <div class="tool-categories">
+    <%= link_to tools_path do %>
+    <div class="card-trip">
+    <%= image_tag('garden-tool.jpg')%>
+      <div class="card-trip-infos">
+        <div>
+          <h2>Garden tools</h2>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+    <%= link_to tools_path do %>
+    <div class="card-trip">
+      <%= image_tag('hand-tool.jpg')%>
+      <div class="card-trip-infos">
+        <div>
+          <h2>Hand tools</h2>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+    <%= link_to tools_path do %>
+    <div class="card-trip">
+      <%= image_tag('electrical-tool.jpg')%>
+      <div class="card-trip-infos">
+        <div>
+          <h2>Power tools</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+</div>
+
 <div class="container-homepage">
   <div class="d-flex p-2">
     <h1>Who is WheelBorrow for?</h1>
@@ -95,33 +133,7 @@
       </div>
     </div>
   </div>
-  <div class="tool-categories">
-    <div class="card-trip">
-    <%= image_tag('garden-tool.jpg')%>
-      <div class="card-trip-infos">
-        <div>
-          <h2>Garden tools</h2>
-        </div>
-      </div>
-    </div>
-    <div class="card-trip">
-      <%= image_tag('hand-tool.jpg')%>
-      <div class="card-trip-infos">
-        <div>
-          <h2>Hand tools</h2>
-        </div>
-      </div>
-    </div>
-    <div class="card-trip">
-      <%= image_tag('electrical-tool.jpg')%>
-      <div class="card-trip-infos">
-        <div>
-          <h2>Power tools</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
 <div class="testimonials">
   <div class="testimonial-container">
     <div class="testimonial-header-container">
