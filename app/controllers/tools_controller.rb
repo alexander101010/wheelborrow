@@ -3,7 +3,7 @@ class ToolsController < ApplicationController
   before_action :find_tool, only: [:show, :edit, :destroy, :update]
 
   def index
-    if params[:location][:query] == "" && params[:tool][:query] == ""
+    if params[:tool][:query] == "" && params[:location][:query] == ""
       @tools = Tool.all
       @users = User.all
     elsif params[:location][:query] == ""

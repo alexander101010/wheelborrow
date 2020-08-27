@@ -1,5 +1,5 @@
 <div class="tools-header">
-  <h4>Available Searchterm tools:</h4>
+  <h4>Available tools matching your search:</h4>
 </div>
 
   <div class="tool-index-container">
@@ -26,4 +26,40 @@
     </div>
   </div>
 </div>
+<br>
+<br>
+  <div class="tool-categories">
+    <%= link_to tools_path(tool:{ query: "gardening"}, location:{ query: ""}) do %>
+    <div class="card-trip">
+      <%= image_tag('garden-tool.jpg')%>
+      <div class="card-trip-infos">
+        <div>
+          <h2>Garden tools</h2>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+    <%= link_to tools_path(tool:{ query: "hand"}, location:{ query: ""}) do %>
+    <div class="card-trip">
+      <%= image_tag('hand-tool.jpg')%>
+      <div class="card-trip-infos">
+        <div>
+          <h2>Hand tools</h2>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+    <%= link_to tools_path(tool:{ query: "power"}, location:{ query: ""}) do %>
+    <div class="card-trip">
+      <%= image_tag('electrical-tool.jpg')%>
+      <div class="card-trip-infos">
+        <div>
+          <h2>Power tools</h2>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
 
