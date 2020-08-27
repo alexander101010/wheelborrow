@@ -8,9 +8,12 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
-  align-items: center;
   padding-left: 75px;
   margin: 0px 0px 20px 0px;
+}
+
+.homepage-words{
+  align-self: center;
 }
 
 .home-card-details > h3 {
@@ -20,26 +23,80 @@
 
 .search-form-control {
   position: absolute;
-  padding-top: 100px;
   width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.search-form-control .search-group{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .search-form-control .btn {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
   border-radius: 30px;
+  margin-right: 10px;
+}
+
+.button-container{
+  height: 3.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid #E7E7E7;
+  border-left: none;
+  background: rgba(255,255,255,0.5);
+  color: #E7E7E7;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 30px 30px 0px;
+  padding: 2px;
 }
 
 .search-form-control .form-control {
   height: 3.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E7E7E7;
-  border-radius: 30px;
+  background: rgba(255,255,255,0.5);
+  color: #E7E7E7;
+  margin-top: 5px;
+  position:relative;
+}
+
+#tool_query{
+  border-radius: 30px 0px 0px 30px;
+}
+
+#tool_query:hover{
+  border: 1px solid $primary;
+}
+
+#location_query{
+  border-right: none;
+}
+
+#location_query:hover{
+  border: 1px solid $primary;
+  border-right: none;
+  + .button-container{
+    border: 1px solid $primary;
+    border-left: none;
+  }
+}
+
+
+
+.search-form-control .form-control::placeholder {
+  color: #E7E7E7;
 }
 
 .search-form-control .form-control:focus {
   border: 1px solid $primary;
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  + .button-container{
+    border: 1px solid $primary;
+    border-left: none;
+  }
 }
