@@ -36,7 +36,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   // executing the animation function
-  initMapbox();
   sliderAnimation();
   initStarRating();
+  initMapbox();
 });

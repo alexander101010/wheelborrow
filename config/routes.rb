@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   end
   get "/account", to: "account#show"
   get "/home", to: "pages#home"
+  post "/confirm", to: "bookings#confirm"
 end
