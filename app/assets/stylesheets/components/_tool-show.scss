@@ -6,14 +6,12 @@
   border-radius: 15px;
   grid-area: img;
 }
-
 .card-tool-show > img {
   height: 500px;
   width: 100%;
   object-fit: cover;
 }
-
-.card-tool-show-desc {
+.card-tool-show-details {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -21,8 +19,27 @@
   border-radius: 15px;
   padding: 15px;
   grid-area: desc;
+  position: relative;
 }
-
+.tool-desc {
+  margin: 15px 0;
+}
+.tool-price-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.tool-price {
+  position: absolute;
+  bottom: 100px;
+}
+.request-booking-btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.request-booking-btn {
+  position: absolute;
+  bottom: 30px;
+}
 .card-tool-show-lender {
   overflow: hidden;
   background: white;
@@ -30,37 +47,29 @@
   margin-top: 10px;
   border-radius: 15px;
   padding: 15px;
-  grid-area: lend;
+  grid-area: lender;
 }
-
-
 .card-tool-show h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
-
 .card-tool-show h3 {
   font-size: 14px;
   font-weight: bold;
   margin: 0;
 }
-
-
 .card-tool-show p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
 }
-
-
-lender-avatar {
-  position: center;
+.lender-avatar {
+  position: left;
   right: 16px;
   top: -20px;
-  width: 150px;
+  width: 75px;
 }
-
-.request-booking {
-  grid-area: req;
-}
+.lender-name {
+  padding-top: 10px;
+ }

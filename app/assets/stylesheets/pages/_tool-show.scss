@@ -5,8 +5,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    "img img img"
-    "desc desc lend"
-    "req req req";
+    "img img desc"
+    "lender map map";
   gap: 15px 10px;
 }
