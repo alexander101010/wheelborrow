@@ -17,6 +17,7 @@
     <div class="col-9">
       <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <%= link_to "Add a new tool", new_tool_path, class:"btn btn-primary" %>
           <% @tools.each do |tool| %>
           <div class="tool-card">
             <% if tool.photo.attached? %>
@@ -33,64 +34,40 @@
               </div>
           </div>
         <% end %>
-        <%= link_to "Add a new tool", new_tool_path, class:"btn btn-primary" %>
-        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-          <% @user.bookings.each do |booking| %>
+      </div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+        <% @user.bookings.each do |booking| %>
+          <div class="tool-card">
+            <% if booking.tool.photo.attached? %>
+            <img src="<%= cl_image_path booking.tool.photo.key %>" />
+            <% end %>
+            <div class="tool-card-infos">
+              <h2><%= booking.tool.name %></h2>
+              <h5><%= booking.tool.description %></h5>
+              <br>
+              <p>Renting from: <%= booking.start_date %></p>
+              <p>Renting until: <%= booking.end_date %></p>
+              <p>Renting from: <%=booking.tool.user.first_name %> <%=booking.tool.user.last_name %></p>              </div>
+            </div>
+          <% end %>
+        </div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+        <% @tools.each do |tool| %>
+          <% tool.bookings.order(:start_date).each do |booking| %>
             <div class="tool-card">
-              <% if booking.tool.photo.attached? %>
               <img src="<%= cl_image_path booking.tool.photo.key %>" />
-              <% end %>
               <div class="tool-card-infos">
-                <h2><%= booking.tool.name %></h2>
-                <h5><%= booking.tool.description %></h5>
-                <br>
-                <p>Renting from: <%= booking.start_date %></p>
-                <p>Renting until: <%= booking.end_date %></p>
-                <p>Renting from:</p>
-                <p><%=booking.tool.user.first_name %> <%=booking.tool.user.last_name %></p>
+                <h2><%= tool.name %></h2>
+                <p><%= tool.category %></p>
+                <p> Start:<%= booking.start_date %>  ||  End:<%= booking.end_date %></p>
+                <p><%= User.find(booking.user_id).first_name %> </p>
               </div>
             </div>
-            <% end %>
-          </div>
-        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
-        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div class="account-container">
-    <h3>My Tools</h3>
-    <div class="tool-cards"></div>
-    <% @tools.each do |tool| %>
-    <div class="tool-card">
-      <% if tool.photo.attached? %>
-      <img src="<%= cl_image_path tool.photo.key %>" />
-      <% end %>
-      <div class="tool-card-infos">
-        <h2><%= tool.name %></h2>
-        <%= link_to 'Details', tool %>
-
-      </div>
-    </div>
-    <% end %>
-    <%= link_to "add a tool", new_tool_path, class:"btn btn-primary" %></div>
-
-    <div class="account-container">
-      <h3>My Lends</h3>
-      <% @tools.each do |tool| %>
-      <% tool.bookings.order(:start_date).each do |booking| %>
-      <div class="tool-card">
-        <img src="<%= cl_image_path booking.tool.photo.key %>" />
-        <div class="tool-card-infos">
-          <h2><%= tool.name %></h2>
-          <p><%= tool.category %></p>
-          <p> Start:<%= booking.start_date %>  ||  End:<%= booking.end_date %></p>
-          <p><%= User.find(booking.user_id).first_name %> </p>
+          <% end %>
         </div>
-      </div>
       <% end %>
+      </div>
     </div>
-    <% end %>
   </div>
 </div>
 
