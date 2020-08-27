@@ -5,21 +5,28 @@
       <img src="<%= cl_image_path @tool.photo.key %>"/>
     <% end %>
   </div>
-  <div class="card-tool-show-desc">
+  <div class="card-tool-show-details">
     <div class="tool-name">
       <h2><%= @tool.name %></h2>
     </div>
     <div class="tool-desc">
       <p><%= @tool.description %></p>
     </div>
-    <div class="tool-price">
-      <h3>€<%= @tool.price %>💸</h3>
+    <div class="tool-price-wrapper">
+      <div class="tool-price">
+        <h3>€<%= @tool.price %> / Day</h3>
+      </div>
+    </div>
+    <div class="request-booking-btn-wrapper">
+      <div class="request-booking-btn">
+        <%= link_to 'Request Booking', new_tool_booking_path(@tool), class: "btn btn-flat" %>
+      </div>
     </div>
   </div>
   <div class="card-tool-show-lender">
-    <div class="lender-avatar">
+    <div class="lender-avatar-wrapper">
       <% if @tool.user.photo.attached? %>
-        <img src="<%= cl_image_path @tool.user.photo.key %>" class="card-tool-show-user avatar-bordered" />
+        <img src="<%= cl_image_path @tool.user.photo.key %>" class="lender-avatar avatar-bordered" />
       <% end %>
     </div>
     <div class="lender-name">
@@ -29,6 +36,4 @@
       <p><%= @tool.user.address %></p>
     </div>
   </div>
-
-  <%= link_to 'Request Booking', new_tool_booking_path(@tool), class: "btn btn-flat request-booking m-3" %>
 </div>
