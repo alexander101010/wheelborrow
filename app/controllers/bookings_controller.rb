@@ -16,7 +16,10 @@ class BookingsController < ApplicationController
   end
 
   def confirm
-    @booking.status = "confirmed"
+    @booking.status = "accepted"
+    @booking.save
+    flash[:notice] = "You have accepted the pending booking request"
+    redirect_back(fallback_location: root_path)
   end
 
   def decline

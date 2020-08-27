@@ -47,8 +47,11 @@
               <br>
               <p>Renting from: <%= booking.start_date %></p>
               <p>Renting until: <%= booking.end_date %></p>
-              <p>Renting from: <%=booking.tool.user.first_name %> <%=booking.tool.user.last_name %></p>              </div>
+              <p>Renting from: <%=booking.tool.user.first_name %> <%=booking.tool.user.last_name %></p>
+              <p>Status:<%= booking.status  %>
+              </p>
             </div>
+          </div>
           <% end %>
         </div>
       <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
@@ -61,6 +64,11 @@
                 <p><%= tool.category %></p>
                 <p> Start:<%= booking.start_date %>  ||  End:<%= booking.end_date %></p>
                 <p><%= User.find(booking.user_id).first_name %> </p>
+                <p>Booking status: <%= booking.status %>
+                  <% if booking.status == "pending" %>
+                  | <%= link_to 'Confirm Booking ', confirm_path(id: booking.id), method: :post, class: "btn btn-primary"%></p>
+                  <% end %>
+
               </div>
             </div>
           <% end %>
@@ -70,8 +78,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
