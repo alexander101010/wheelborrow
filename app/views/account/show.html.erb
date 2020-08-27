@@ -26,8 +26,8 @@
             <div class="tool-card-infos">
               <h3><%= tool.name %></h3>
               <h5><%= tool.description%></h5>
-              <h6>€<%= tool.price %>/day</h6>
-              <a class="btn btn-primary" href='<%= link_to 'Details', tool %>' role="button">Tool details</a>
+              <h6>€ <%= tool.price %> / day</h6>
+              <%= link_to 'Details', tool, class: "btn btn-primary"%>
               <%= link_to tool, method: :delete do %>
                 <i class="far fa-trash-alt"></i>
               <% end %>
