@@ -3,8 +3,10 @@ class ToolsController < ApplicationController
   before_action :find_tool, only: [:show, :edit, :destroy, :update]
 
   def index
-
-    if params[:location][:query] == ""
+    if params[:location][:query] == "" && params[:tool][:query] == ""
+      @tools = Tool.all
+      @users = User.all
+    elsif params[:location][:query] == ""
       @users = []
       search_tools if params[:tool][:query].present?
       User.all.each do |user_result|
@@ -15,10 +17,20 @@ class ToolsController < ApplicationController
           end
         end
       end
+    elsif params[:tool][:query] == ""
+      @tools = []
+      search_location if params[:location][:query].present?
+      @user_results.each do |user_result|
+        Tool.all.each do |tool_result|
+          if tool_result.user_id == user_result.searchable.id
+            @tools << tool_result
+            @users << user_result.searchable
+          end
+        end
+      end
     else
       search_location if params[:location][:query].present?
       search_tools if params[:tool][:query].present?
-
       @user_results.each do |user_result|
         @tool_results.each do |tool_result|
           if tool_result.searchable.user_id == user_result.searchable.id
