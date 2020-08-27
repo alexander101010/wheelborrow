@@ -48,6 +48,11 @@ class ToolsController < ApplicationController
   end
 
   def show
+    @marker =
+      {
+        lat: @tool.user.latitude,
+        lng: @tool.user.longitude
+      }
   end
 
   def new
