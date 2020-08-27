@@ -9,4 +9,72 @@
   width: 100%;
 }
 
+.tool-card-show {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: 10px;
+  border-radius: 15px;
+  grid-area: img;
+}
+
+.tool-card-show > img {
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.tool-card-show-desc {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: 10px;
+  border-radius: 15px;
+  padding: 15px;
+  grid-area: desc;
+}
+
+.tool-card-show-lender {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin-top: 10px;
+  border-radius: 15px;
+  padding: 15px;
+  grid-area: lend;
+}
+
+
+.tool-card-show h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.tool-card-show h3 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+
+
+.tool-card-show p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+lender-avatar {
+  position: center;
+  right: 16px;
+  top: -20px;
+  width: 150px;
+}
+
+.request-booking {
+  grid-area: req;
+}
+
+
 
