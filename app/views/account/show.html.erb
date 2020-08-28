@@ -29,14 +29,14 @@
               <h6>€ <%= tool.price %> / day</h6>
               <%= link_to 'Details', tool, class: "btn btn-primary"%>
               <%= link_to tool, method: :delete do %>
-                <i class="far fa-trash-alt"></i>
+              <i class="far fa-trash-alt"></i>
               <% end %>
-              </div>
+            </div>
           </div>
-        <% end %>
-      </div>
-      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-        <% @user.bookings.each do |booking| %>
+          <% end %>
+        </div>
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+          <% @user.bookings.each do |booking| %>
           <div class="tool-card">
             <% if booking.tool.photo.attached? %>
             <img src="<%= cl_image_path booking.tool.photo.key %>" />
@@ -47,41 +47,40 @@
               <%= render "shared/review-form", tool: @tool, review: @review%>
               <h5><%= booking.tool.description %></h5>
               <br>
-              <p>Renting from: <%= booking.start_date %></p>
-              <p>Renting until: <%= booking.end_date %></p>
+              <p>Renting between: <%= booking.start_date %> – <%= booking.end_date %></p>
               <p>Renting from: <%=booking.tool.user.first_name %> <%=booking.tool.user.last_name %></p>
-              <p>Status:<%= booking.status  %>
-              </p>
+              <p>Total cost: €<%= (booking.end_date - booking.start_date).to_i * booking.tool.price %></p>
+              <p>Status:<%= booking.status %></p>
             </div>
           </div>
           <% end %>
         </div>
-      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-        <% @tools.each do |tool| %>
+        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+          <% @tools.each do |tool| %>
           <% tool.bookings.order(:start_date).each do |booking| %>
-            <div class="tool-card">
-              <img src="<%= cl_image_path booking.tool.photo.key %>" />
-              <div class="tool-card-infos">
-                <h2><%= tool.name %></h2>
-                <p><%= tool.category %></p>
-                <p> Start:<%= booking.start_date %>  ||  End:<%= booking.end_date %></p>
-                <p><%= User.find(booking.user_id).first_name %> </p>
-                <p>Booking status: <%= booking.status %></p>
-                  <div class="status-btns">
-                    <% if booking.status == "Pending" %>
-                    <div class="status-btn"><%= link_to 'Confirm Booking', confirm_path(booking), method: :post, class: "btn btn-danger"%></div>
-                    <div class="status-btn"><%= link_to 'Decline Booking', decline_path(booking), method: :post, class: "btn btn-warning"%></div>
-                    <% end %>
-                    <% if booking.status != "Cancelled" %>
-                    <div class="status-btn"><%= link_to 'Cancel Booking ', cancel_path(booking), method: :post, class: "btn btn-outline-warning"%></div>
-                    <% end %>
-                    <div class="status-btn"><%= link_to 'Booking Details', booking, method: :get, class: "btn btn-primary"%></div>
-                  </div>
+          <div class="tool-card">
+            <img src="<%= cl_image_path booking.tool.photo.key %>" />
+            <div class="tool-card-infos">
+              <h2><%= tool.name %></h2>
+              <p><%= tool.category %></p>
+              <p> Start:<%= booking.start_date %>  –  End:<%= booking.end_date %></p>
+              <p><%= User.find(booking.user_id).first_name %> </p>
+              <p>Income: €<%= (booking.end_date - booking.start_date).to_i * tool.price %></p>
+              <p>Booking status: <%= booking.status %></p>
+              <div class="status-btns">
+                <% if booking.status == "Pending" %>
+                <div class="status-btn"><%= link_to 'Confirm Booking', confirm_path(booking), method: :post, class: "btn btn-success"%></div>
+                <div class="status-btn"><%= link_to 'Decline Booking', decline_path(booking), method: :post, class: "btn btn-warning"%></div>
+                <% end %>
+                <% if booking.status != "Cancelled" %>
+                <div class="status-btn"><%= link_to 'Cancel Booking ', cancel_path(booking), method: :post, class: "btn btn-outline-warning"%></div>
+                <% end %>
               </div>
             </div>
+          </div>
           <% end %>
         </div>
-      <% end %>
+        <% end %>
       </div>
     </div>
   </div>
