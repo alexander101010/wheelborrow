@@ -1,40 +1,36 @@
 <div class="container-booking-show">
   <div class="booking-users">
     <div class="booking-users-lender">
-      <div class="booking-lender-img">
-        <div class="lender-avatar-wrapper">
-          <% if @booking.tool.user.photo.attached? %>
+      <div class="booking-users-lender-img">
+        <% if @booking.tool.user.photo.attached? %>
           <img src="<%= cl_image_path @booking.tool.user.photo.key %>" class="lender-avatar avatar-bordered" />
-          <% end %>
-        </div>
+        <% end %>
       </div>
-      <div class="booking-lender-name">
+      <div class="booking-users-lender-name">
         <h3> <%= @booking.tool.user.first_name %> </h3>
       </div>
     </div>
-    <div class="booking-users-borrower">
-      <div class="booking-borrower-img">
-        <div class="borrower-avatar-wrapper">
-          <% if @booking.user.photo.attached? %>
-            <img src="<%= cl_image_path @booking.user.photo.key %>" class="lender-avatar avatar-bordered" />
-          <% end %>
-        </div>
-      </div>
-      <div class="booking-borrower-name">
-        <h3> <%= @booking.user.first_name %> </h3>
-      </div>
-    </div>
     <div class="booking-dates">
-      <div class="booking-dates-start">
-        <p> Start Date: <%= @booking.start_date %> </p>
+    <div class="booking-dates-start">
+      <p> Start Date: <%= @booking.start_date %> </p>
+    </div>
+    <div class="booking-dadtes-end">
+      <p> End Date: <%= @booking.end_date %> </p>
+    </div>
+  </div>
+    <div class="booking-users-borrower">
+      <div class="booking-users-borrower-img">
+        <% if @booking.user.photo.attached? %>
+            <img src="<%= cl_image_path @booking.user.photo.key %>" class="lender-avatar avatar-bordered" />
+        <% end %>
       </div>
-      <div class="booking-dadtes-end">
-        <p> End Date: <%= @booking.end_date %> </p>
+      <div class="booking-users-borrower-name">
+        <h3> <%= @booking.user.first_name %> </h3>
       </div>
     </div>
   </div>
   <div class="booking-tool">
-    <div class="booking-tool">
+    <div class="booking-tool-img">
       <% if @booking.tool.photo.attached? %>
         <img src="<%= cl_image_path @booking.tool.photo.key %>"/>
       <% end %>
