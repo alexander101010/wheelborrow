@@ -1,0 +1,13 @@
+
+<p><%= user.first_name %>'s 🛠s</p>
+    <% user.tools.each do |tool| %>
+      <p>
+        <%= link_to tool.name, tool_path(tool)  %>
+      </p>
+    <% end %>
+
+
+
+
+
+
