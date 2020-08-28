@@ -65,7 +65,11 @@ class ToolsController < ApplicationController
         lat: @tool.user.latitude,
         lng: @tool.user.longitude
       }]
-    @average_rating = @tool.average_rating(@tool)
+    if @tool.reviews.length > 0
+      @average_rating = @tool.average_rating(@tool)
+    else
+      @average_rating = "No reviews."
+    end
   end
 
   def new
