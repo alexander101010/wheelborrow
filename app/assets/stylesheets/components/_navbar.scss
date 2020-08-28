@@ -21,7 +21,7 @@
 }
 
 .nav-button-container{
-  height: 2.5rem;
+  height: 3.25rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E7E7E7;
   border-left: none;
@@ -32,11 +32,10 @@
   justify-content: center;
   align-items: center;
   border-radius: 0px 30px 30px 0px;
-  padding: 2px;
 }
 
 .nav-search-form-control .nav-form-control {
-  height: 2.5rem;
+  height: 3.25rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E7E7E7;
   background: rgba(255,255,255,0.5);
@@ -47,6 +46,7 @@
 
 .nav-search-form-control .btn {
   border-radius: 30px;
+  margin-right: 5px;
 }
 
 // #tool_query{
@@ -67,6 +67,7 @@
   + .nav-button-container{
     border: 1px solid $primary;
     border-left: none;
+
   }
 }
 
