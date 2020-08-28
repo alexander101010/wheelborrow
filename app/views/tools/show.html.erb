@@ -8,6 +8,7 @@
   <div class="card-tool-show-details">
     <div class="tool-name">
       <h2><%= @tool.name %></h2>
+      <%= render "shared/review-score", tool: @average_rating%>
     </div>
     <div class="tool-desc">
       <p><%= @tool.description %></p>

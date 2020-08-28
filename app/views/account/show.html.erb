@@ -43,6 +43,8 @@
             <% end %>
             <div class="tool-card-infos">
               <h2><%= booking.tool.name %></h2>
+              <% @tool = booking.tool %>
+              <%= render "shared/review-form", tool: @tool, review: @review%>
               <h5><%= booking.tool.description %></h5>
               <br>
               <p>Renting from: <%= booking.start_date %></p>
