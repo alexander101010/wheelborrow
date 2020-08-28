@@ -18,37 +18,45 @@ Tool.destroy_all
 User.destroy_all
 
 
-TOOLS = %w(hammer saw jackhammer paintbrush drill chainsaw bucket broom ladder)
+TOOLS = %w(Hammer Saw Jackhammer Paintbrush Drill Chainsaw Bucket Broom Ladder Screwdriver)
 STATUS = %w(pending accepted denied)
 ADDRESS =
 [
-"Museumplein 10, 1071 DJ Amsterdam, Netherlands",
-"Museumstraat 1, 1071 XX Amsterdam, Netherlands",
-"Museumplein 6, 1071 DJ Amsterdam, Netherlands",
-"IJsbaanpad 9, 1076 CV Amsterdam",
-"Wijde Heisteeg 1, 1016 AS Amsterdam",
-"Nieuwmarkt 4, 1012 CR Amsterdam"
+"Museumplein 10 Amsterdam",
+"Museumstraat 1 Amsterdam",
+"Museumplein 6 Amsterdam",
+"IJsbaanpad 9 Amsterdam",
+"Wijde Heisteeg 1 Amsterdam",
+"Nieuwmarkt 4 Amsterdam",
+"Linnaeuskade 16 Amsterdam",
+"Eerste Atjehstraat 164 Amsterdam",
+"Utrechtsestraat 19 Amsterdam",
+"Funenkade 5 Amsterdam",
+"Kloveniersburgwal 20 Amsterdam",
+"Spijkerkade 10 Amsterdam",
+"Nieuwendammerdijk 297 Amsterdam"
 ]
 
-puts "creating new users"
+puts "creating new users..."
+i=0
 
-5.times do
-  file = URI.open('https://www.google.com/search?q=tree&oq=tree&aqs=chrome..69i57j0l3j69i65j69i60l3.16088j0j4&sourceid=chrome&ie=UTF-8')
+10.times do
   user = User.new
   user.first_name = Faker::Name.first_name
   user.last_name = Faker::Name.last_name
   user.email = Faker::Internet.email
   user.password = 'valid_password'
   user.password_confirmation = 'valid_password'
-  user.address = ADDRESS.sample
-  # file = URI.open(Faker::Fillmurray.image)
+  user.address = ADDRESS[i]
+  i+=1
+  file = URI.open("https://source.unsplash.com/900x900/?headshot")
   user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
   user.save!
 
-  2.times do
+  4.times do
     tool = Tool.new
     tool.name = TOOLS.sample
-    tool.description = Faker::Vehicle.standard_specs
+    tool.description = Faker::Lorem.paragraph_by_chars(number: 70, supplemental: false)
     tool.price = rand(1..100)
     tool.category = ["hand tools", "power tools", "gardening tools"].sample
     file = URI.open("https://source.unsplash.com/1600x900/?#{tool.name}")
@@ -65,7 +73,7 @@ puts "creating new users"
       booking.tool = tool
       booking.save
 
-      2.times do
+      3.times do
         review = Review.new
         review.content = Faker::Relationship.familial
         review.rating = rand(1..5)
