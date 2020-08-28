@@ -43,6 +43,8 @@
             <% end %>
             <div class="tool-card-infos">
               <h2><%= booking.tool.name %></h2>
+              <% @tool = booking.tool %>
+              <%= render "shared/review-form", tool: @tool, review: @review%>
               <h5><%= booking.tool.description %></h5>
               <br>
               <p>Renting from: <%= booking.start_date %></p>
@@ -64,11 +66,16 @@
                 <p><%= tool.category %></p>
                 <p> Start:<%= booking.start_date %>  ||  End:<%= booking.end_date %></p>
                 <p><%= User.find(booking.user_id).first_name %> </p>
-                <p>Booking status: <%= booking.status %>
-                  <% if booking.status == "pending" %>
-                  | <%= link_to 'Confirm Booking ', confirm_path(id: booking.id), method: :post, class: "btn btn-primary"%></p>
-                  <% end %>
-
+                <p>Booking status: <%= booking.status %></p>
+                  <div class="status-btns">
+                    <% if booking.status == "Pending" %>
+                    <div class="status-btn"><%= link_to 'Confirm Booking', confirm_path(booking), method: :post, class: "btn btn-success"%></div>
+                    <div class="status-btn"><%= link_to 'Decline Booking', decline_path(booking), method: :post, class: "btn btn-warning"%></div>
+                    <% end %>
+                    <% if booking.status != "Cancelled" %>
+                    <div class="status-btn"><%= link_to 'Cancel Booking ', cancel_path(booking), method: :post, class: "btn btn-outline-warning"%></div>
+                    <% end %>
+                  </div>
               </div>
             </div>
           <% end %>

@@ -1,14 +1,15 @@
-<div class="container">
+<div class="form-header">
   <h1>Request a booking</h1>
-  <p>Find me in app/views/bookings/new.html.erb</p>
-
+</div>
+<div class="form-container">
   <div class="new-booking-form">
     <%= simple_form_for [@tool, @booking] do |f| %>
     <%= f.input :start_date, as: :date, html5: true%>
     <%= f.input :end_date, as: :date, html5: true%>
     <%= f.submit "Add Booking", class: "btn btn-success" %>
-  <% end %>
+    <% end %>
   </div>
+</div>
 </div>
 
 

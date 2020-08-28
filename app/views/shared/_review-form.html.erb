@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-4">
       <%= simple_form_for([@tool,@review], html: { class: "review_form" }) do |f|%>
-        <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "Rate this tool" %>
       <% end %>
     </div>
   </div>
