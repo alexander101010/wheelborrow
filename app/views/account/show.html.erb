@@ -50,7 +50,8 @@
               <p>Renting between: <%= booking.start_date %> – <%= booking.end_date %></p>
               <p>Renting from: <%=booking.tool.user.first_name %> <%=booking.tool.user.last_name %></p>
               <p>Total cost: €<%= (booking.end_date - booking.start_date).to_i * booking.tool.price %></p>
-              <p>Status:<%= booking.status %></p>
+              <p>Status:<%= booking.status  %></p>
+                    <div class="status-btn"><%= link_to 'Booking Details', booking, method: :get, class: "btn btn-outline-primary"%></div>
             </div>
           </div>
           <% end %>
@@ -58,23 +59,25 @@
         <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
           <% @tools.each do |tool| %>
           <% tool.bookings.order(:start_date).each do |booking| %>
-          <div class="tool-card">
-            <img src="<%= cl_image_path booking.tool.photo.key %>" />
-            <div class="tool-card-infos">
-              <h2><%= tool.name %></h2>
-              <p><%= tool.category %></p>
-              <p> Start:<%= booking.start_date %>  –  End:<%= booking.end_date %></p>
-              <p><%= User.find(booking.user_id).first_name %> </p>
-              <p>Income: €<%= (booking.end_date - booking.start_date).to_i * tool.price %></p>
-              <p>Booking status: <%= booking.status %></p>
-              <div class="status-btns">
-                <% if booking.status == "Pending" %>
-                <div class="status-btn"><%= link_to 'Confirm Booking', confirm_path(booking), method: :post, class: "btn btn-success"%></div>
-                <div class="status-btn"><%= link_to 'Decline Booking', decline_path(booking), method: :post, class: "btn btn-warning"%></div>
-                <% end %>
-                <% if booking.status != "Cancelled" %>
-                <div class="status-btn"><%= link_to 'Cancel Booking ', cancel_path(booking), method: :post, class: "btn btn-outline-warning"%></div>
-                <% end %>
+            <div class="tool-card">
+              <img src="<%= cl_image_path booking.tool.photo.key %>" />
+              <div class="tool-card-infos">
+                <h2><%= tool.name %></h2>
+                <p><%= tool.category %></p>
+                <p> Start:<%= booking.start_date %>  ||  End:<%= booking.end_date %></p>
+                <p><%= User.find(booking.user_id).first_name %> </p>
+                <p>Income: €<%= (booking.end_date - booking.start_date).to_i * tool.price %></p>
+                <p>Booking status: <%= booking.status %></p>
+                  <div class="status-btns">
+                    <% if booking.status == "Pending" %>
+                    <div class="status-btn"><%= link_to 'Confirm Booking', confirm_path(booking), method: :post, class: "btn btn-danger"%></div>
+                    <div class="status-btn"><%= link_to 'Decline Booking', decline_path(booking), method: :post, class: "btn btn-warning"%></div>
+                    <% end %>
+                    <% if booking.status != "Cancelled" %>
+                      <div class="status-btn"><%= link_to 'Cancel Booking ', cancel_path(booking), method: :post, class: "btn btn-outline-warning"%></div>
+                    <% end %>
+                    <div class="status-btn"><%= link_to 'Booking Details', booking, method: :get, class: "btn btn-outline-primary"%></div>
+                  </div>
               </div>
             </div>
           </div>
