@@ -1,16 +1,16 @@
-<div class="form-header">
-  <h1>Request a booking</h1>
-</div>
-<div class="form-container">
-  <div class="new-booking-form">
-    <%= simple_form_for [@tool, @booking] do |f| %>
-    <%= f.input :start_date, as: :date, html5: true%>
-    <%= f.input :end_date, as: :date, html5: true%>
-    <%= f.submit "Add Booking", class: "btn btn-success" %>
-    <% end %>
+<div class="form-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url( <%= image_path('sign_up.jpg')%>);">
+  <div class="form-header">
+    <h1>Request a booking</h1>
+  </div>
+  <div class="form-container">
+    <div class="new-booking-form">
+      <%= simple_form_for [@tool, @booking] do |f| %>
+      <%= f.input :start_date, as: :date, html5: true%>
+      <%= f.input :end_date, as: :date, html5: true%>
+      <%= f.submit "Add Booking", class: "btn btn-success" %>
+      <% end %>
+    </div>
   </div>
 </div>
 </div>
-
-
 
