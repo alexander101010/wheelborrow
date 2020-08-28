@@ -51,6 +51,7 @@
               <p>Renting until: <%= booking.end_date %></p>
               <p>Renting from: <%=booking.tool.user.first_name %> <%=booking.tool.user.last_name %></p>
               <p>Status:<%= booking.status  %>
+              <div class="status-btn"><%= link_to 'Booking Details', booking, method: :get, class: "btn btn-primary"%></div>
               </p>
             </div>
           </div>
