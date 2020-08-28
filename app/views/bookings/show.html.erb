@@ -1,35 +1,57 @@
 <div class="container-booking-show">
-
-  <div class="card-booking-show">
-    <% if @booking.tool.photo.attached? %>
-      <img src="<%= cl_image_path @booking.tool.photo.key %>"/>
-    <% end %>
-  </div>
-  <div class="card-booking-show-details">
-    <div class="booking-price-wrapper">
-      <div class="booking-price">
-        <h3>€<%= @booking.tool.price %> / Day</h3>
+  <div class="booking-users">
+    <div class="booking-users-lender">
+      <div class="booking-lender-img">
+        <div class="lender-avatar-wrapper">
+          <% if @booking.tool.user.photo.attached? %>
+          <img src="<%= cl_image_path @booking.tool.user.photo.key %>" class="lender-avatar avatar-bordered" />
+          <% end %>
+        </div>
+      </div>
+      <div class="booking-lender-name">
+        <h3> <%= @booking.tool.user.first_name %> </h3>
       </div>
     </div>
-    <div class="request-booking-btn-wrapper">
+    <div class="booking-users-borrower">
+      <div class="booking-borrower-img">
+        <div class="borrower-avatar-wrapper">
+          <% if @booking.user.photo.attached? %>
+            <img src="<%= cl_image_path @booking.user.photo.key %>" class="lender-avatar avatar-bordered" />
+          <% end %>
+        </div>
+      </div>
+      <div class="booking-borrower-name">
+        <h3> <%= @booking.user.first_name %> </h3>
+      </div>
+    </div>
+    <div class="booking-dates">
+      <div class="booking-dates-start">
+        <p> Start Date: <%= @booking.start_date %> </p>
+      </div>
+      <div class="booking-dadtes-end">
+        <p> End Date: <%= @booking.end_date %> </p>
+      </div>
     </div>
   </div>
-  <div class="card-booking-show-lender">
-    <div class="lender-avatar-wrapper">
-      <% if @booking.user.photo.attached? %>
-        <img src="<%= cl_image_path @booking.user.photo.key %>" class="lender-avatar avatar-bordered" />
+  <div class="booking-tool">
+    <div class="booking-tool">
+      <% if @booking.tool.photo.attached? %>
+        <img src="<%= cl_image_path @booking.tool.photo.key %>"/>
       <% end %>
     </div>
-    <div class="lender-name">
-      <h2><%= @booking.user.first_name %></h2>
+    <div class="booking-tool-name">
+      <h5><%= @booking.tool.name %></h5>
     </div>
-    <div class="lender-address">
-      <p><%= @booking.user.address %></p>
+    <div class="booking-tool-details-btn-wrapper">
+      <div class="booking-tool-details-btn">
+        <%= link_to 'Details', @booking.tool, class: "btn btn-primary"%>
+      </div>
     </div>
   </div>
-  <div class="booking-map" id="map"
+
+  <div class="booking-map", id="map"
     style="width: 100%; height: 400px;"
-    data-markers="<%= @markers.to_json %>"
+    data-markers="<%= @marker.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>

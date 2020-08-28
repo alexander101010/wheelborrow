@@ -1,0 +1,11 @@
+.container-booking-show {
+  margin: auto;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "users users tool"
+    "map map map";
+  gap: 15px 10px;
+}

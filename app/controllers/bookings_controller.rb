@@ -6,6 +6,11 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @marker =
+      [{
+        lat: @booking.tool.user.latitude,
+        lng: @booking.tool.user.longitude
+      }]
   end
 
   def status?

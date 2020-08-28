@@ -1,0 +1,86 @@
+.booking-users {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 15px;margin-top: 10px;
+  margin-top: 20px;
+  grid-area: users;
+  height: 300px;
+  display: grid;
+  align-content: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "lender borrower"
+    "dates dates";
+}
+
+.booking-users-lender {
+  grid-area: lender;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.booking-users-lender-img {
+  width: 45px;
+}
+
+.booking-users-lender-name {
+  // grid-area: lender-name;
+}
+
+.booking-users-borrower {
+  grid-area: borrower;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.booking-users-borrower > img {
+  width: 100px;
+}
+
+.booking-users-borrower-name {
+  // grid-area: borrower-name;
+}
+
+.booking-dates {
+  grid-area: dates;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.booking-tool {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  margin-top: 20px;
+  grid-area: tool;
+}
+
+.booking-tool > img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.booking-tool-details-btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.booking-tool-name {
+  padding-left: 10px;
+}
+
+
+.booking-map {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 15px;
+  margin-top: 10px;
+  grid-area: map;
+  background-color: pink;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
