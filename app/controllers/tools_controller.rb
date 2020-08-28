@@ -65,6 +65,7 @@ class ToolsController < ApplicationController
         lat: @tool.user.latitude,
         lng: @tool.user.longitude
       }]
+    @average_rating = @tool.average_rating(@tool)
   end
 
   def new
