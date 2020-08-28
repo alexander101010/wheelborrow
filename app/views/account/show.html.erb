@@ -50,8 +50,8 @@
               <p>Renting from: <%= booking.start_date %></p>
               <p>Renting until: <%= booking.end_date %></p>
               <p>Renting from: <%=booking.tool.user.first_name %> <%=booking.tool.user.last_name %></p>
-              <p>Status:<%= booking.status  %>
-              </p>
+              <p>Status:<%= booking.status  %></p>
+                    <div class="status-btn"><%= link_to 'Booking Details', booking, method: :get, class: "btn btn-outline-primary"%></div>
             </div>
           </div>
           <% end %>
@@ -69,12 +69,13 @@
                 <p>Booking status: <%= booking.status %></p>
                   <div class="status-btns">
                     <% if booking.status == "Pending" %>
-                    <div class="status-btn"><%= link_to 'Confirm Booking', confirm_path(booking), method: :post, class: "btn btn-success"%></div>
+                    <div class="status-btn"><%= link_to 'Confirm Booking', confirm_path(booking), method: :post, class: "btn btn-danger"%></div>
                     <div class="status-btn"><%= link_to 'Decline Booking', decline_path(booking), method: :post, class: "btn btn-warning"%></div>
                     <% end %>
                     <% if booking.status != "Cancelled" %>
-                    <div class="status-btn"><%= link_to 'Cancel Booking ', cancel_path(booking), method: :post, class: "btn btn-outline-warning"%></div>
+                      <div class="status-btn"><%= link_to 'Cancel Booking ', cancel_path(booking), method: :post, class: "btn btn-outline-warning"%></div>
                     <% end %>
+                    <div class="status-btn"><%= link_to 'Booking Details', booking, method: :get, class: "btn btn-outline-primary"%></div>
                   </div>
               </div>
             </div>
