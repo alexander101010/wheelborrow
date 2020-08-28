@@ -69,7 +69,7 @@
                 <p>Booking status: <%= booking.status %></p>
                   <div class="status-btns">
                     <% if booking.status == "Pending" %>
-                    <div class="status-btn"><%= link_to 'Confirm Booking', confirm_path(booking), method: :post, class: "btn btn-success"%></div>
+                    <div class="status-btn"><%= link_to 'Confirm Booking', confirm_path(booking), method: :post, class: "btn btn-danger"%></div>
                     <div class="status-btn"><%= link_to 'Decline Booking', decline_path(booking), method: :post, class: "btn btn-warning"%></div>
                     <% end %>
                     <% if booking.status != "Cancelled" %>
