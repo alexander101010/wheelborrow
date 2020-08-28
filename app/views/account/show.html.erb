@@ -75,6 +75,7 @@
                     <% if booking.status != "Cancelled" %>
                     <div class="status-btn"><%= link_to 'Cancel Booking ', cancel_path(booking), method: :post, class: "btn btn-outline-warning"%></div>
                     <% end %>
+                    <div class="status-btn"><%= link_to 'Booking Details', booking, method: :get, class: "btn btn-primary"%></div>
                   </div>
               </div>
             </div>
