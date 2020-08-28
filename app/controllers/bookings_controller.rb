@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :find, only: [:show, :edit, :destroy, :confirm, :decline]
+  before_action :find, only: [:show, :edit, :destroy]
+  before_action :find_format, only: [:cancel, :confirm, :decline]
   def index
     @bookings = Booking.all
   end
@@ -12,11 +13,10 @@ class BookingsController < ApplicationController
   end
 
   def cancel
-    @booking = Booking.find(params[:format])
     @booking.status = "Cancelled"
     @booking.save
     flash[:notice] = "You have cancelled this booking request"
-    # redirect_back(fallback_location: root_path)
+    redirect_back(fallback_location: root_path)
   end
 
   def confirm
@@ -56,6 +56,10 @@ private
 
   def find
     @booking = Booking.find(params[:id])
+  end
+
+  def find_format
+    @booking = Booking.find(params[:format])
   end
 
   def params_format

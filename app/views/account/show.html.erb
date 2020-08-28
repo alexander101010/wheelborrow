@@ -66,14 +66,16 @@
                 <p><%= tool.category %></p>
                 <p> Start:<%= booking.start_date %>  ||  End:<%= booking.end_date %></p>
                 <p><%= User.find(booking.user_id).first_name %> </p>
-                <p>Booking status: <%= booking.status %>
-                  <% if booking.status == "Pending" %>
-                  | <%= link_to 'Confirm Booking ', confirm_path(booking_id), method: :post, class: "btn btn-success"%></p>
-                  | <%= link_to 'Decline Booking ', decline_path(booking_id), method: :post, class: "btn btn-warning"%></p>
-                  <% end %>
-                  <% if booking.status != "Cancelled" %>
-                  | <%= link_to 'Cancel Booking ', cancel_path(booking), method: :post, class: "btn btn-outline-warning"%></p>
-                  <% end %>
+                <p>Booking status: <%= booking.status %></p>
+                  <div class="status-btns">
+                    <% if booking.status == "Pending" %>
+                    <div class="status-btn"><%= link_to 'Confirm Booking', confirm_path(booking), method: :post, class: "btn btn-success"%></div>
+                    <div class="status-btn"><%= link_to 'Decline Booking', decline_path(booking), method: :post, class: "btn btn-warning"%></div>
+                    <% end %>
+                    <% if booking.status != "Cancelled" %>
+                    <div class="status-btn"><%= link_to 'Cancel Booking ', cancel_path(booking), method: :post, class: "btn btn-outline-warning"%></div>
+                    <% end %>
+                  </div>
               </div>
             </div>
           <% end %>
