@@ -1,26 +1,17 @@
 <div class="container-booking-show">
 
   <div class="card-booking-show">
-    <% if @booking.photo.attached? %>
-      <img src="<%= cl_image_path @booking.photo.key %>"/>
+    <% if @booking.tool.photo.attached? %>
+      <img src="<%= cl_image_path @booking.tool.photo.key %>"/>
     <% end %>
   </div>
   <div class="card-booking-show-details">
-    <div class="booking-name">
-      <h2><%= @booking.name %></h2>
-    </div>
-    <div class="booking-desc">
-      <p><%= @booking.description %></p>
-    </div>
     <div class="booking-price-wrapper">
       <div class="booking-price">
-        <h3>€<%= @booking.price %> / Day</h3>
+        <h3>€<%= @booking.tool.price %> / Day</h3>
       </div>
     </div>
     <div class="request-booking-btn-wrapper">
-      <div class="request-booking-btn">
-        <%= link_to 'Request Booking', new_booking_booking_path(@booking), class: "btn btn-flat" %>
-      </div>
     </div>
   </div>
   <div class="card-booking-show-lender">
