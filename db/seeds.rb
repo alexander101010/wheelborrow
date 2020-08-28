@@ -20,6 +20,15 @@ User.destroy_all
 
 TOOLS = %w(hammer saw jackhammer paintbrush drill chainsaw bucket broom ladder)
 STATUS = %w(pending accepted denied)
+ADDRESS =
+[
+"Museumplein 10, 1071 DJ Amsterdam, Netherlands",
+"Museumstraat 1, 1071 XX Amsterdam, Netherlands",
+"Museumplein 6, 1071 DJ Amsterdam, Netherlands",
+"IJsbaanpad 9, 1076 CV Amsterdam",
+"Wijde Heisteeg 1, 1016 AS Amsterdam",
+"Nieuwmarkt 4, 1012 CR Amsterdam"
+]
 
 puts "creating new users"
 
@@ -31,9 +40,7 @@ puts "creating new users"
   user.email = Faker::Internet.email
   user.password = 'valid_password'
   user.password_confirmation = 'valid_password'
-  user.address = Faker::Address.full_address
-  user.latitude = Faker::Address.latitude
-  user.longitude = Faker::Address.longitude
+  user.address = ADDRESS.sample
   # file = URI.open(Faker::Fillmurray.image)
   user.photo.attach(io: file, filename: "#{user.first_name.downcase}.jpg", content_type: 'image/jpg')
   user.save!
