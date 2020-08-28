@@ -15,11 +15,11 @@
 
 .tool-card {
   width: 100%;
-  border: 1px solid #FC5E2A;
+  border-bottom: 1px solid #FC5E2A;
   border-radius: 5px;
   padding: 10px;
   display: flex;
-  margin: 8px 0;
+  margin: 24px 0;
 }
 
 .tool-card > img {
@@ -30,4 +30,8 @@
 
 .tool-card-infos > h5 {
   font-weight: lighter;
+}
+
+.container {
+  margin-bottom: 20px;
 }
